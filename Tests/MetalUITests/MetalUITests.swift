@@ -3,14 +3,22 @@ import XCTest
 @testable import MetalUI
 
 final class MetalUITests: XCTestCase {
-  func testExample() {
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct
-    // results.
-    XCTAssertEqual("MetalUI().text", "Hello, World!")
+  
+  
+  override func setUpWithError() throws {
+    continueAfterFailure = false
   }
-
+  
+  override func tearDownWithError() throws {
+  }
+  
+  func testVertex() {
+    let vertex = MetalRenderingVertex(position: SIMD3(1, 2, 1), color: SIMD4(1, 1, 1, 1))
+    
+    XCTAssertEqual(vertex.position, SIMD3(1, 2, 1))
+  }
+  
   static var allTests = [
-    ("testExample", testExample)
+    ("testVertex", testVertex)
   ]
 }
